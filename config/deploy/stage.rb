@@ -1,7 +1,7 @@
 
 # Use the line below to be asked what branch to checkout to on each deployment to this environment
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
-set :branch, :develop
+set :branch,        :develop
 set :symfony_env,   'stage'
 
 set :deploy_to,     fetch(:remote_path) + '/' + fetch(:domain) + '/' + fetch(:symfony_env)

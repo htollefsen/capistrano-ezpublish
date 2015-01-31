@@ -3,6 +3,8 @@ Capistrano with eZPublish 5
 
 ## Required ruby gems on local machine/execution source
 
+Run `gem list` to see if you meet the requirements
+
 * bundler (1.7.12)
 * capistrano (3.3.5)
 * capistrano-symfony (0.4.0)
@@ -10,29 +12,36 @@ Capistrano with eZPublish 5
     * capistrano-composer (0.0.5)
     * capistrano-file-permissions (0.1.0)
 
-You may run `gem list` to see if you already have them, if not run one or more of the following commands.<br>
 <em>Note: running as sudo is not required, but highly recommended.</em>
+
 * `sudo gem install bundler`
 * `sudo gem install capistrano`
 * `sudo gem install capistrano-symfony`
 
 Installation
 --------------
-1. Copy ./Gemfile to `<my-project>/`
+1. Copy deploymentfiles: `cp -R <capistrano-ezpublish dir>/*  <my-project>/`
 2. Update the Project-Specific variables in config/deploy.rb
-3. Setup parameters.yml on your deployment destination. Default path: /var/www/<domain>/<environment>/shared/ezpublish/config/parameters.yml
-4. Add `SetEnv ENVIRONMENT {prod,stage}` in your webservers virtual hosts
+3. Setup parameters.yml on your deployment destination. <br>
+   Default path: /var/www/<domain>/<environment>/shared/ezpublish/config/parameters.yml <br>
+   E.g: SSH to server and run: `mkdir -p /var/www/htollefsen.com/stage/shared/ezpublish/config && cd $_ && touch parameters.yml && cd -`
 
+Optional
+--------------
+* Override the sessionpath to your project to prevent visitors from being logged out on deploy: <br>
+`framework.session.handler_id: session.handler.native_file` <br>
+`framework.session.save_path: "%kernel.root_dir%/sessions"` <br>
+* If you are running Enterprise Edition, remember to apply an `auth.json` in your home-dir on the servers, or in your projects root dir to access `updates.ez.no`
 
 Usage
 --------------
 * Deploy to stage: `cap stage deploy`
 * Deploy to prod: `cap prod deploy`
 
-
-Tips
+Adding stage environment
 --------------
-* Change sessionpath to project to prevent visitors from being logged out upon deploy <br>
-`framework.session:` <br>
-`    handler_id:  session.handler.native_file` <br>
-`    save_path: "%kernel.root_dir%/sessions"` <br>
+1. Add `SetEnv ENVIRONMENT stage` in your webservers virtual hosts
+2. Add symfony config_stage.yml to your config folder at `ezpublish/config/config_stage.yml`
+3. Add a `config/deploy/stage.rb`-file (or use the default), and update :branch, :symfony_env and the roles if needed
+
+
