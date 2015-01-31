@@ -21,9 +21,11 @@ Run `gem list` to see if you meet the requirements
 Installation
 --------------
 1. Copy deploymentfiles: `cp -R <capistrano-ezpublish dir>/*  <my-project>/`
-2. Update the Project-Specific variables in config/deploy.rb
-3. Setup parameters.yml on your deployment destination. <br>
-   Default path: /var/www/<domain>/<environment>/shared/ezpublish/config/parameters.yml <br>
+2. Test your ruby/rake/gem dependecies with cd `<my-project> && bundle exec cap install STAGES=prod,stage`. <br>
+You should get some `... already exists`-output and the last output should be `Capified`.
+3. Update the Project-Specific variables in config/deploy.rb
+4. Setup parameters.yml on your deployment destination. <br>
+   Default path: `/var/www/<domain>/<environment>/shared/ezpublish/config/parameters.yml` <br>
    E.g: SSH to server and run: `mkdir -p /var/www/htollefsen.com/stage/shared/ezpublish/config && cd $_ && touch parameters.yml && cd -`
 
 Optional
