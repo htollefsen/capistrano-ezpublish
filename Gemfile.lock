@@ -1,16 +1,16 @@
 GIT
   remote: git://github.com/capistrano/composer.git
-  revision: dbf9353389f459786839c860e5bd04bd5b86433a
+  revision: aa31fe43b669fe1caee7e5703256f16fef519133
   specs:
-    capistrano-composer (0.0.5)
+    capistrano-composer (0.0.6)
       capistrano (>= 3.0.0.pre)
 
 GIT
   remote: git://github.com/capistrano/file-permissions.git
-  revision: 36945381d401e3c4f23205f8a156514e2b0a5f0b
+  revision: a03b91fd46cb47d05419db5af45379a142e2e72b
   specs:
-    capistrano-file-permissions (0.1.0)
-      capistrano (>= 3.0.0)
+    capistrano-file-permissions (0.1.1)
+      capistrano (~> 3.0)
 
 GIT
   remote: git://github.com/capistrano/symfony.git
@@ -24,19 +24,17 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    capistrano (3.3.5)
-      capistrano-stats (~> 1.1.0)
+    capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
       sshkit (~> 1.3)
-    capistrano-stats (1.1.1)
-    colorize (0.7.5)
+    colorize (0.7.7)
     i18n (0.7.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-ssh (2.9.2)
+    net-ssh (3.0.1)
     rake (10.4.2)
-    sshkit (1.6.1)
+    sshkit (1.7.1)
       colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
@@ -45,7 +43,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  capistrano (= 3.3.5)
-  capistrano-composer (= 0.0.5)!
-  capistrano-file-permissions (= 0.1.0)!
+  capistrano (= 3.4.0)
+  capistrano-composer (= 0.0.6)!
+  capistrano-file-permissions (= 0.1.1)!
   capistrano-symfony (= 0.4.0)!
+
+BUNDLED WITH
+   1.10.6
